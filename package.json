@@ -1,0 +1,15 @@
+{
+  "name": "blots-generator",
+  "version": "1.0.0",
+  "bin": "index.js",
+  "author": "devvime",
+  "pkg": {
+    "assets": [
+      "src/**/*",
+      "src/components/**/*",
+      "src/models/**/*",
+      "src/services/**/*"
+    ]
+  },
+  "license": "MIT"
+}
