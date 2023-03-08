@@ -2,7 +2,8 @@ const fs = require('fs')
 const args = process.argv
 const command = args[2]
 
-const models = require('./functions/models')
+const models = require('./src/functions/models')
+const utils = require('./src/functions/utils')
 
 let pathName = ''
 let action = ''
@@ -38,7 +39,7 @@ switch (action) {
 if (!fs.existsSync(pathName)) {
   fs.mkdirSync(pathName, { recursive: true })
 } else {
-  console.error('This file already exists!')
+  utils.message('warning', `This file already exists in ${pathName}`)
   return
 }
 
@@ -47,11 +48,14 @@ switch (action) {
     fs.writeFileSync(`${pathName}/${fileName}.html`, models.htmlModel(), { encoding: 'utf-8' })
     fs.writeFileSync(`${pathName}/${fileName}.sass`, models.sassModel(), { encoding: 'utf-8' })
     fs.writeFileSync(`${pathName}/${fileName}.js`, models.scriptModel(fileName), { encoding: 'utf-8' })
+    utils.message('success',`Component created in ${pathName}`)
   break
   case 'createModel':
     fs.writeFileSync(`${pathName}/${fileName}.js`, models.modelComponentModel(fileName), { encoding: 'utf-8' })
+    utils.message('success',`Model created in ${pathName}`)
   break
   case 'createService':
     fs.writeFileSync(`${pathName}/${fileName}.js`, models.serviceModel(fileName), { encoding: 'utf-8' })
+    utils.message('success',`Service created in ${pathName}`)
   break
 }
