@@ -1,0 +1,18 @@
+import { blots } from 'blots'
+import './${fileName}.sass'
+import html from './${fileName}.html'
+
+export default class ${fileName} {
+
+    constructor() {
+        this.init()
+    }
+
+    init() {
+        this.render()
+    }
+
+    render() {
+        blots.draw('#content', html)
+    }
+}

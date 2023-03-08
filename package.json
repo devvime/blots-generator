@@ -1,15 +1,19 @@
 {
   "name": "blots-generator",
   "version": "1.0.0",
-  "bin": "index.js",
-  "author": "devvime",
-  "pkg": {
-    "assets": [
-      "src/**/*",
-      "src/components/**/*",
-      "src/models/**/*",
-      "src/services/**/*"
-    ]
+  "description": "Package for crating base components for blots.js",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devvime/blots-generator.git"
   },
-  "license": "MIT"
+  "author": "devvime",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devvime/blots-generator/issues"
+  },
+  "homepage": "https://github.com/devvime/blots-generator#readme",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
 }
