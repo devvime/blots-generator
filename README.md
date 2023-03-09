@@ -4,6 +4,20 @@ PKG for crating base components for blots.js
 
  ***
 
+### Install
+
+```
+npm i blots-generator
+```
+
+Add this script in package.json
+
+```json
+"scripts": {
+    "blots": "node node_modules/blots-generator/index.js"
+}
+```
+
 ### Default project structure folders
 
 Your folder structure should look like this:
