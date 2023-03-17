@@ -7,7 +7,7 @@ PKG for crating base components for blots.js
 ### Install
 
 ```
-npm i blots-generator
+npm i blots-generator --save-dev
 ```
 
 Add this script in package.json
