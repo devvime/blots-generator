@@ -1,6 +1,6 @@
 {
   "name": "blots-generator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Package for crating base components for blots.js",
   "main": "index.js",
   "repository": {
