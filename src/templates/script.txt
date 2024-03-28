@@ -1,18 +1,16 @@
 import { blots } from 'blots'
-import './${fileName}.sass'
-import html from './${fileName}.html'
+import './${fileName}-element.sass'
+import element from './${fileName}-element.html'
 
-export default class ${fileName} {
+const strict = blots.createObservable()
 
-    constructor() {
-        this.init()
-    }
-
-    init() {
-        this.render()
-    }
-
-    render() {
-        blots.draw('#content', html)
-    }
+export const ${elementName} = {
+  strict: {},
+  component() {
+    blots.draw('#content', element, ${elementName}.strict)
+    ${elementName}.actions()
+  },
+  actions() {}
 }
+
+strict.subscribe(${elementName}.component)

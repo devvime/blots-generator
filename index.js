@@ -1,9 +1,15 @@
 const fs = require('fs')
+const models = require('./src/functions/models')
+const utils = require('./src/functions/utils')
 const args = process.argv
 const command = args[2]
 
-const models = require('./src/functions/models')
-const utils = require('./src/functions/utils')
+if (args[2] === undefined) {
+  return utils.message('danger', `No commands were entered.`)
+}
+if (args[3] === undefined) {
+  return utils.message('danger', `Enter a name for the element.`)
+}
 
 let pathName = ''
 let action = ''
@@ -23,16 +29,17 @@ if (command === 'new-service' || command === 'ns' ) {
 
 const pathNameArray = pathName.split('/')
 let fileName = ''
+let tempName = pathNameArray[pathNameArray.length -1]
 
 switch (action) {
   case 'createComponent':
-    fileName = pathNameArray[pathNameArray.length -1] + 'Component'
+    fileName = tempName.charAt(0).toUpperCase() + tempName.slice(1)
   break
   case 'createModel':
-    fileName = pathNameArray[pathNameArray.length -1] + 'Model'
+    fileName = tempName.charAt(0).toUpperCase() + tempName.slice(1) + '-model'
   break
   case 'createService':
-    fileName = pathNameArray[pathNameArray.length -1] + 'Service'
+    fileName = tempName.charAt(0).toUpperCase() + tempName.slice(1) + '-service'
   break
 }
 
@@ -45,9 +52,9 @@ if (!fs.existsSync(pathName)) {
 
 switch (action) {
   case 'createComponent':
-    fs.writeFileSync(`${pathName}/${fileName}.html`, models.htmlModel(), { encoding: 'utf-8' })
-    fs.writeFileSync(`${pathName}/${fileName}.sass`, models.sassModel(), { encoding: 'utf-8' })
-    fs.writeFileSync(`${pathName}/${fileName}.js`, models.scriptModel(fileName), { encoding: 'utf-8' })
+    fs.writeFileSync(`${pathName}/${fileName.toLowerCase()}-element.html`, models.htmlModel(), { encoding: 'utf-8' })
+    fs.writeFileSync(`${pathName}/${fileName.toLowerCase()}-element.sass`, models.sassModel(), { encoding: 'utf-8' })
+    fs.writeFileSync(`${pathName}/${fileName.toLowerCase()}-element.js`, models.scriptModel(fileName), { encoding: 'utf-8' })
     utils.message('success',`Component created in ${pathName}`)
   break
   case 'createModel':
